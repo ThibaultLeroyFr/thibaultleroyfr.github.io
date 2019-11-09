@@ -79,6 +79,16 @@ background-image:url(tibopersomain.jpg);
 background-repeat:no-repeat;
 }
 
+#minorPicture .container {
+  &__image {
+    width: 200px;
+    float: left;
+  }
+  &__text {
+    display: inline;
+  }
+}
+
 #headerTitle
 {
 position:relative;
