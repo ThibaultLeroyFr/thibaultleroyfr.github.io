@@ -63,7 +63,7 @@ border-bottom:none;
 #mainPicture
 {
 clear:both;
-width:670px;
+width:900px;
 height:345px;
 background-color:#160306;
 }
@@ -71,7 +71,7 @@ background-color:#160306;
 #mainPicture .picture
 {
 position:relative;
-width:650px;
+width:880px;
 height:325px;
 top:10px;
 margin-left:10px;
@@ -104,7 +104,7 @@ font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
 .contentBox
 {
 margin-top:10px;
-width:670px;
+width:900px;
 height:auto;
 background-color:#160306;
 padding-bottom:20px;
@@ -114,7 +114,7 @@ padding-bottom:20px;
 {
 margin-left:10px;
 position:relative;
-width:650px;
+width:880px;
 height:auto;
 top:10px;
 background-image:url(contentBack.png);
