@@ -83,7 +83,7 @@ background-repeat:no-repeat;
 {
 position:relative;
 text-align:left;
-top:14px;
+top:70px;
 left:22px;
 font-size:27px;
 color:#254f7a;
@@ -94,9 +94,9 @@ font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
 {
 position:relative;
 text-align:left;
-top:12px;
+top:80px;
 left:22px;
-font-size:18px;
+font-size:20px;
 color:#2e68a3;
 font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
 }
@@ -127,17 +127,17 @@ h1
 font-size:25px;
 margin-bottom:10px;
 padding-top:18px;
-margin-left:15px;
-margin-top:15px;
+margin-left:22px;
+margin-top:22px;
 color:#1F1603;
 }
 
 .contentText
 {
-font-size:13px;
-line-height:24px;
-margin-left:13px;
-margin-right:13px;
+font-size:16px;
+line-height:26px;
+margin-left:20px;
+margin-right:20px;
 }
 
 #footer {
