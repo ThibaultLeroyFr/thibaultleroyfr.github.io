@@ -188,7 +188,7 @@ text-decoration:none;
 a:hover
 {
 color:#062179;
-text-decoration:blink;
+text-decoration:underline;
 }
 a:visited
 {
