@@ -29,7 +29,7 @@ body {
 text-align:center;
 position:relative;
 margin-top:10px;
-font-size:18px;
+font-size:16px;
 margin-left:-10px;
 width:160px;
 height: 35px;
@@ -62,10 +62,9 @@ border-bottom:none;
 text-align:center;
 color:#FFFFFF;
 display: block;
-width:121px;
+width:160px;
 height: 35px;
 line-height: 35px;
-background-image:url(tab.png);
 border-bottom:none;
 }
 
