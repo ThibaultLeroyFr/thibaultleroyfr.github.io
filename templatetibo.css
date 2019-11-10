@@ -5,7 +5,7 @@ body {
 	text-align: left;
 	font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
 	font-size: 13px;
-	color: #33c477;
+	color: #000000;
 	background: #000000;
 	background-repeat:repeat-x;
 }
@@ -73,7 +73,7 @@ border-bottom:none;
 clear:both;
 width:900px;
 height:345px;
-background-color:#C87002;
+background-color:#214d20;
 }
 
 #mainPicture .picture
@@ -114,7 +114,7 @@ font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
 margin-top:10px;
 width:900px;
 height:auto;
-background-color:#C87002;
+background-color:#214d20;
 padding-bottom:20px;
 }
 
