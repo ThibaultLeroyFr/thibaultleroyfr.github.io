@@ -45,7 +45,7 @@ font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
 text-decoration:none;
 color:#000000;
 margin-bottom:0px;
-border-bottom:dashed 1px;
+border-bottom:none;
 }
 
 
@@ -54,7 +54,7 @@ border-bottom:dashed 1px;
 text-decoration:none;
 color:#000000;
 margin-bottom:0px;
-border-bottom:dashed 1px;
+border-bottom:none;
 }
 
 .topNaviagationLink a:hover
