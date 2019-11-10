@@ -48,6 +48,15 @@ margin-bottom:0px;
 border-bottom:dashed 1px;
 }
 
+
+.topNaviagationLink a:visited
+{
+text-decoration:none;
+color:#000000;
+margin-bottom:0px;
+border-bottom:dashed 1px;
+}
+
 .topNaviagationLink a:hover
 {
 text-align:center;
