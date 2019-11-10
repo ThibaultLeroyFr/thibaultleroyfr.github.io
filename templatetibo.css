@@ -43,7 +43,7 @@ font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
 .topNaviagationLink a
 {
 text-decoration:none;
-color:#000000;
+color:#d3d3d3;
 margin-bottom:0px;
 border-bottom:none;
 }
@@ -52,7 +52,7 @@ border-bottom:none;
 .topNaviagationLink a:visited
 {
 text-decoration:none;
-color:#000000;
+color:#d3d3d3;
 margin-bottom:0px;
 border-bottom:none;
 }
