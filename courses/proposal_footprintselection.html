@@ -132,11 +132,11 @@ Based on your subset, it is possible to draw this distribution of the Fst value 
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Now, you know the number of the SNP in the full list of SNPs, but this information is still poorly informative. <br>
 But I guess, you are more interested by the genomic location of this SNP. The idea is to get the information from your file <br>
-<code><a href="mailto:pooldata@snp.info">pooldata@snp.info</a>[which(SNPvalues$SNPvalues==max(SNPvalues)),]</code><br></p>
+<code>pooldata@snp.info[which(SNPvalues$SNPvalues==max(SNPvalues)),]</code><br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Overall, this SNP exhibits greater levels of differentiation than any other SNP of our dataset, but you are probably interested to know which populations are the most different. To do this, you can compare the total number of reference alleles and contrast it to the total number of each population.</p>
 
-<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><code><a href="mailto:pooldata@refallele.readcount">pooldata@refallele.readcount</a>[which(SNPvalues$SNPvalues==max(SNPvalues)),]</code><br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><code>pooldata@refallele.readcount[which(SNPvalues$SNPvalues==max(SNPvalues)),]</code><br>
 <code>pooldata@readcoverage[which(SNPvalues$SNPvalues==max(SNPvalues)),]</code><br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Which population exhibits the highest allele frequency (reference allele)? Which one the lowest?<br>
@@ -151,7 +151,7 @@ But I guess, you are more interested by the genomic location of this SNP. The id
 <code>which(SNPvalues$SNPvalues&gt;quantile(SNPvalues$SNPvalues, probs = 0.99, na.rm = TRUE))</code><br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Great, but I guess you are still more interested to know in which genomic location are these SNPs. 
-<code><a href="mailto:pooldata@snp.info">pooldata@snp.info</a>[which(SNPvalues$SNPvalues&gt;quantile(SNPvalues$SNPvalues, probs = 0.99, na.rm = TRUE)),]</code><br></p>
+<code>pooldata@snp.info[which(SNPvalues$SNPvalues&gt;quantile(SNPvalues$SNPvalues, probs = 0.99, na.rm = TRUE)),]</code><br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Note: In fact by doing this, you have done your first &quot;genome scan&quot; for Fst outliers, because you tried to identify SNPs exhibiting more differentiation as compared to all others (the tail of the distribution). <br></p>
 
@@ -280,7 +280,7 @@ Today, we will use on results based on the local climate of each population (and
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">In which region(s) of the genome can you observe most associated SNPs? <br>
 In Leroy et al. (2020, New Phytologist), we then identified candidate genes in these regions and hypothesized that the gene responsible for these associated SNPs might be due to either SCD1 or ASPG1 (or both). SCD1 is a gene which is know to be associated with the stomatal responses to water stress and can therefore be expected to be associated with temperature. ASPG1 is a gene which is known to play also an important role in the production of the gibberelins, therefore controlling important roles in various plant developmental processes, including seed dormancy. Seed dormancy is of course crucial for determining the time of the year suitable for the germination of the seed (and therefore the plant to survive). <br></p>
-
+<br>
 </body>
 
 </html>
