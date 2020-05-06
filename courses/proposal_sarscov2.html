@@ -64,7 +64,7 @@ Perform a whole genome alignment of 3 SARS-CoV2 genomes using ClustalW:<br>
 How long did the alignment take? <br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Define a function to export an alignment in a fasta format<br>
-(to increase readibility I added the character &quot;|&quot; in the pdf (to show the loop in the code), but please do NOT write this pipe character in your code)
+(to increase readibility I added the character &quot;|&quot; in the pdf (to show the loop in the code), but please do NOT write this pipe character in your code) <br>
 <code>alignment2Fasta &lt;- function(alignment, filename) { </code><br>
 <code>|  sink(filename) </code><br>
 <code>|  n &lt;- length(rownames(alignment)) </code><br>
@@ -196,10 +196,10 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><strong>Option 2 (&quot;adegenet&quot;, using &quot;vcfR&quot;&quot; to load the VCF&quot;)</strong>:<br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Read your VCF file and perform the PCA:<br>
-<code>library(&quot;adegenet&quot;)<br>
-<code>library(vcfR)<br>
-<code>genofile &lt;- vcfR2genlight(vcfRfile)<br>
-<code>out_pca2 &lt;- dudi.pca(genofile,cent=FALSE,scale=FALSE,scannf=FALSE,nf=5)<br></p>
+<code>library(&quot;adegenet&quot;)</code><br>
+<code>library(vcfR)</code><br>
+<code>genofile &lt;- vcfR2genlight(vcfRfile)</code><br>
+<code>out_pca2 &lt;- dudi.pca(genofile,cent=FALSE,scale=FALSE,scannf=FALSE,nf=5)</code><br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Compute the explained part of variance:<br>
 <code>propvarexp=rbind(out_pca2$eig/sum(out_pca2$eig),cumsum(out_pca2$eig)/sum(out_pca2$eig))</code><br></p>
