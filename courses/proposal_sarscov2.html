@@ -23,7 +23,7 @@
         <div class="contentBox">
     	<div class="innerBox">
 
-<h2> <a href="https://thibaultleroyfr.github.io/courses.html"><- Other courses</a> <br></h2>
+<h3> <a href="https://thibaultleroyfr.github.io/courses.html">< Other courses</a> <br></h3>
 		
 <h1>Population genomic approaches</h1>
 
@@ -31,19 +31,19 @@
 
 <h3>General context</h3>
 
-<p>Given the coronavirus disease 2019 (COVID-19) outbreak situation and the home learning situation, we have one additional day to work on population genetics analyses. The methods I want to introduce today are those that can be of interest to check the accuracy of a given dataset (including the reference genome used) and to carry out a preliminary analysis. All biological models can be relevant to introduce these additional (and very conventional) methods. <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Given the coronavirus disease 2019 (COVID-19) outbreak situation and the home learning situation, we have one additional day to work on population genetics analyses. The methods I want to introduce today are those that can be of interest to check the accuracy of a given dataset (including the reference genome used) and to carry out a preliminary analysis. All biological models can be relevant to introduce these additional (and very conventional) methods. <br>
 I decided to focus on the analysis of a handful of SARS-CoV2 genomes. I made this choice for several reasons (i) viral genomes are simple and have small genome sizes, thus allowing us to perform several different analyses using R on the same day, (ii) we will work on a plant species tomorrow and it was also important to work on a totally different kind of organism, (iii) we all receive a lot of information from journalists about the outbreak and the evolution of the virus. In the current context, I hypothesized that you could be interested by working on this topic and doing your own analyses. <br>
 Of course, the idea is not to perform detailed and publishable analyses (some papers are already published and a lot of excellent preprints are available), but rather to introduce a general course using these specific data. Our analyses will be only very preliminary and all our results need to be interpreted with caution. At the end of the pdf, you will find some additional links, including videos, if you are interested to learn more about the evolution of the SARS-CoV2 virus.<br>
 For legal reasons, I only used data that I am allowed to share with you, because these sequencing data are publicly available on the Sequence Read Archive (SRA). This data corresponds to a very limited proportion of the total number of sequences already sequenced available today all over the world. <br></p>
 
-<p>Addditional notes: Given the situation with the home learning and considering your different backgrounds/computer skills, I decided to code all in R. Almost all steps can be done under a R environment (ideally under a Rstudio environment), but some additional R packages need to be loaded (and therefore, be installed). Depending of the R version you use, some problems during the installation are possible (and it is difficult to anticipate). <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Addditional notes: Given the situation with the home learning and considering your different backgrounds/computer skills, I decided to code all in R. Almost all steps can be done under a R environment (ideally under a Rstudio environment), but some additional R packages need to be loaded (and therefore, be installed). Depending of the R version you use, some problems during the installation are possible (and it is difficult to anticipate). <br>
 The main objective here is to understand the rationale, to read and write some lines of code, to perform the computations and interprete a little bit the output. If you want to do similar analyses on larger genomes (typically the genome you are interested in), I encourage you to write a similar code on another programing language and to only use R to make graphics using the newly generated output files. I can of course provide you some support. <br>
 This PDF file will help you to reproduce the commands. But you are highly encouraged to be curious and to edit the commands, to test some different parameters, etc. At the beginning of this course, you can copy/paste all the code, but it is important to read the code and try to understand the command, because toward the end of this PDF file, you will need to code more on your side. <br>
 For each function, if you want additional information, run <br>&quot;?[NAME_OF_YOUR_FUNCTION]&quot; <br>in the R console, e.g. &quot;?plot&quot;. It will provide you a lot of information. <br></p>
 
 <h3>Step 1: Generate a multilocus alignment between 3 different SARS-CoV2 sequences using msa <br></h3>
 
-<p>Install the package &quot;msa&quot;, if you have not already installed it:<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Install the package &quot;msa&quot;, if you have not already installed it:<br>
 <code>install.packages(&quot;msa&quot;)</code>
 <br>
 <br>
@@ -63,7 +63,7 @@ Perform a whole genome alignment of 3 SARS-CoV2 genomes using ClustalW:<br>
 <code>Sys.time() </code><br>
 How long did the alignment take? <br></p>
 
-<p>Define a function to export an alignment in a fasta format<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Define a function to export an alignment in a fasta format<br>
 (to increase readibility I added the character &quot;|&quot; in the pdf (to show the loop in the code), but please do NOT write this pipe character in your code)
 <code>alignment2Fasta &lt;- function(alignment, filename) { </code><br>
 <code>|  sink(filename) </code><br>
@@ -78,47 +78,47 @@ How long did the alignment take? <br></p>
 <code>|  sink(NULL) </code><br>
 <code>|} </code><br><br></p>
 
-<p>Export your alignment in a fasta &quot;aligned.3SARSCOV2.fasta&quot; <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Export your alignment in a fasta &quot;aligned.3SARSCOV2.fasta&quot; <br>
 <code>alignment2Fasta(alignment, &#39;aligned.3SARSCOV2.fasta&#39;) </code><br></p>
 
 <h3>Step 2: Generate a phylogenetic tree of 100 SARS-CoV2 genomes</h3>
 
-<p>Note: As you can imagine, the time needed to perform an alignment increases with the number of sequences to align, and this computational burden increases more than linearly. To speed up the process, I already provided you the file containing 100 fully aligned SARS-CoV2 genome sequences (&quot;<em>aligned.100genomes.v2.fasta</em>&quot;&quot;).<br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Note: As you can imagine, the time needed to perform an alignment increases with the number of sequences to align, and this computational burden increases more than linearly. To speed up the process, I already provided you the file containing 100 fully aligned SARS-CoV2 genome sequences (&quot;<em>aligned.100genomes.v2.fasta</em>&quot;&quot;).<br></p>
 
-<p>Read this alignment: <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Read this alignment: <br>
 <code>readalignment &lt;- readDNAMultipleAlignment(</code><br>
 <code>filepath = &quot;aligned.100genomes.v2.fasta&quot;,format=&quot;fasta&quot;)</code><br></p>
 
-<p>Install the package &quot;seqinr&quot; and &quot;ape&quot;, if you have not already installed it:<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Install the package &quot;seqinr&quot; and &quot;ape&quot;, if you have not already installed it:<br>
 <code>install.packages(&quot;seqinr&quot;, dependencies = TRUE)</code><br>
 <code>install.packages(&quot;ape&quot;, dependencies = TRUE)</code><br></p>
 
-<p>Load the packages:<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Load the packages:<br>
 <code>library(&quot;seqinr&quot;)</code><br>
 <code>library(&quot;ape&quot;)</code><br></p>
 
-<p>Read the alignment in the fasta format: <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Read the alignment in the fasta format: <br>
 <code>alignment &lt;- msaConvert(readalignment, type=&quot;seqinr::alignment&quot;)</code><br>
 <code>d &lt;- dist.alignment(alignment2, &quot;identity&quot;)</code><br></p>
 
-<p>Generate a simple Neighbor-Joining tree following Saiton &amp; Nei (1987): <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Generate a simple Neighbor-Joining tree following Saiton &amp; Nei (1987): <br>
 <code>sarscov2 &lt;- nj(d)</code><br>
 <code>plot(sarscov2, main=&quot;Phylogenetic tree of 100 SARS CoV2 sequences&quot;,</code><br>
 <code>type=&quot;unrooted&quot;,cex=0.5)+ add.scale.bar()</code><br></p>
 
-<p>A useful function &quot;ape&quot; function to reorder the internal structure of a tree (ladderize): <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">A useful function &quot;ape&quot; function to reorder the internal structure of a tree (ladderize): <br>
 <code>sarscov2_ladderize &lt;-ladderize(sarscov2) </code><br>
 <code>plot(sarscov2_ladderize, main=&quot;Phylogenetic tree of 100 SARS CoV2 sequences&quot;,</code><br>
 <code>type=&quot;unrooted&quot;,cex=0.5)+ add.scale.bar()</code><br></p>
 
-<p>You can display both trees at the same time using the par function &quot;par(mfrow=c(LINES,COLUMNS)&quot;: <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">You can display both trees at the same time using the par function &quot;par(mfrow=c(LINES,COLUMNS)&quot;: <br>
 <code>par(mfrow=c(1,2))</code><br>
 <code>plot(sarscov2, main=&quot;Phylogenetic tree of 100 SARS CoV2 sequences&quot;,</code><br>
 <code>type=&quot;unrooted&quot;,cex=0.5)+ add.scale.bar() </code><br>
 <code>plot(sarscov2_ladderize, main=&quot;Phylogenetic tree of 100 SARS CoV2 sequences&quot;,</code><br>
 <code>type=&quot;unrooted&quot;,cex=0.5)+ add.scale.bar() </code><br></p>
 
-<p>It is possible to enhance readibility using some user-defined colors: <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">It is possible to enhance readibility using some user-defined colors: <br>
 <code>par(mfrow=c(1,1))</code><br>
 <code>plot(sarscov2_ladderize, main=&quot;Phylogenetic tree of 100 SARS-CoV2 sequences&quot;,</code><br>
 <code>type=&quot;cladogram&quot;,cex=0.5,</code><br>
@@ -136,47 +136,47 @@ How long did the alignment take? <br></p>
 <code>ifelse(grepl(&quot;PAKISTAN&quot;,sarscov2$tip.label),&quot;darkslategray4&quot;,&quot;black&quot;)))))))))))),</code><br>
 <code>edge.color=&quot;darkgrey&quot;)+ add.scale.bar(x=0.025,y=0,col=&quot;black&quot;,lcol=&quot;darkgrey&quot;)</code><br></p>
 
-<p>Note: you are free to change the commands. Here, the colors are set to be more or less in line with those used by Nextstrain (&quot; <a href="https://nextstrain.org/ncov">https://nextstrain.org/ncov</a> &quot;). I strongly encourage you to spend some time to visit this website. Nextstrain is an excellent tool (the best to date and to my knowledge) for genetic data visualization of the SARS-CoV2 genomes. In particular, Nextstrain gives an explicit time information (i.e. when the strain was isolated, &quot;TIME&quot;), in addition of course to the sequence divergence. Combining the &quot;clock&quot; and the &quot;time&quot; options, Nextstrain can for example report you an estimate of the average number of substitions per year. <br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Note: you are free to change the commands. Here, the colors are set to be more or less in line with those used by Nextstrain (&quot; <a href="https://nextstrain.org/ncov">https://nextstrain.org/ncov</a> &quot;). I strongly encourage you to spend some time to visit this website. Nextstrain is an excellent tool (the best to date and to my knowledge) for genetic data visualization of the SARS-CoV2 genomes. In particular, Nextstrain gives an explicit time information (i.e. when the strain was isolated, &quot;TIME&quot;), in addition of course to the sequence divergence. Combining the &quot;clock&quot; and the &quot;time&quot; options, Nextstrain can for example report you an estimate of the average number of substitions per year. <br></p>
 
 <h3>Step 3: Visualizing and editing multiple sequence alignments to generate a more reliable tree<br></h3>
 
-<p>Open your alignment on a sequence alignment software (you can download aliview, bioedit, etc...).<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Open your alignment on a sequence alignment software (you can download aliview, bioedit, etc...).<br>
 What can you observe on these alignments?<br></p>
 
-<p>Try to remove the 200 first and the last 200 positions of the alignments. There are plenty of solutions to do this, more or less automatically, here an example of how to do this using a one line perl command (to be executed <strong>in your terminal</strong>): <br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Try to remove the 200 first and the last 200 positions of the alignments. There are plenty of solutions to do this, more or less automatically, here an example of how to do this using a one line perl command (to be executed <strong>in your terminal</strong>): <br></p>
 
-<p><code>perl -0076 -e &#39;while (&lt;&gt;) { chomp; my ($name, @parts) = split /\n/; my $seq = join &quot;&quot;, @parts; </code><br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><code>perl -0076 -e &#39;while (&lt;&gt;) { chomp; my ($name, @parts) = split /\n/; my $seq = join &quot;&quot;, @parts; </code><br>
 <code>next unless defined $name &amp;&amp; defined $seq; substr($seq, 0, 200, &quot;&quot;); print join &quot;\n&quot;, &quot;&gt;&quot;.$name, &quot;$seq\n&quot; }&#39; </code><br>
 <code>INFILE.fasta | perl -0076 -e &#39;while (&lt;&gt;) { chomp; my ($name, @parts) = split /\n/; my $seq = join &quot;&quot;, @parts; </code><br>
 <code>next unless defined $name &amp;&amp; defined $seq; substr($seq, -200, length($seq), &quot;&quot;); print join &quot;\n&quot;, &quot;&gt;&quot;.$name, </code><br>l
 <code>&quot;$seq\n&quot; }&#39;&gt; OUTFILE.fasta </code><br></p>
 
-<p>Open again your truncated alignement. Is it better?<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Open again your truncated alignement. Is it better?<br>
 If you can&#39;t generate this file this file is also available on moodle &quot;<em>aligned.100genomes.v2.200bases2EndsExcluded.fasta</em>&quot; <br>
 Redo the step 2 based on this new alignement. If possible, generate a figure with the two trees side by side and highlight the reference genome &quot;MN908947&quot; isolated from one of the first patients in Wuhan (Wu et al. 2020 Nature). <br></p>
 
-<p>Note: In the case of the SARS-CoV2, it is quite easy to visualize the alignment (30kb genome only). But when we work on large genomes (through whole-genome alignments, or more likely read mapping), it is impossible to visually check these errors. But such errors are widespread (e.g. misidentification of one or several individuals, individuals with a lot of private alleles corresponding to sequence errors rather than true variants, etc...). Some fast methods can be really helpful to identify these weird individuals. In the following section, I introduce the importance of Principal Component Analyses. <br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Note: In the case of the SARS-CoV2, it is quite easy to visualize the alignment (30kb genome only). But when we work on large genomes (through whole-genome alignments, or more likely read mapping), it is impossible to visually check these errors. But such errors are widespread (e.g. misidentification of one or several individuals, individuals with a lot of private alleles corresponding to sequence errors rather than true variants, etc...). Some fast methods can be really helpful to identify these weird individuals. In the following section, I introduce the importance of Principal Component Analyses. <br></p>
 
 <h3>Step 4: Principal Component Analyses</h3>
 
-<p>In the following section, we will focus on the importance of PCA for prelimary analyses of population genomics dataset. PCA are probably the most widely approaches used in this context. It allows to detect mislabeled samples in the dataset, but also to have a first look at the population structure.<br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">In the following section, we will focus on the importance of PCA for prelimary analyses of population genomics dataset. PCA are probably the most widely approaches used in this context. It allows to detect mislabeled samples in the dataset, but also to have a first look at the population structure.<br></p>
 
-<p>As Ovidiu previously introduced, the VCF is the standard file format for storing genotype information. A simple convertion of your alignment in a vcf file can be done using snp-sites (<strong>in your terminal</strong>):<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">As Ovidiu previously introduced, the VCF is the standard file format for storing genotype information. A simple convertion of your alignment in a vcf file can be done using snp-sites (<strong>in your terminal</strong>):<br>
 <code>snp-sites -v aligned.100genomes.200bases2EndsExcluded.fasta</code><br>
 (If you have any issue with snp-sites, the file is also provided on moodle:<br> <em>aligned.100genomes.v2.200bases2EndsExcluded.fasta.vcf</em>).<br></p>
 
-<p>Several R packages exist to perform a PCA in R (below I introduced two methods, in case you have any issue with the one of the packages).<br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Several R packages exist to perform a PCA in R (below I introduced two methods, in case you have any issue with the one of the packages).<br></p>
 
-<p><strong>Option 1 (&quot;SNPRelate&quot;)</strong>:<br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><strong>Option 1 (&quot;SNPRelate&quot;)</strong>:<br></p>
 
-<p>Read your VCF file and perform the PCA:<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Read your VCF file and perform the PCA:<br>
 <code>library(&quot;SNPRelate&quot;)</code><br>
 <code>vcf.fn&lt;-&quot;aligned.100genomes.v2.200bases2EndsExcluded.fasta.vcf&quot;</code><br>
 <code>snpgdsVCF2GDS(vcf.fn, &quot;sarscov2.gds&quot;,  method=&quot;biallelic.only&quot;)</code><br>
 <code>genofile &lt;- openfn.gds(&quot;sarscov2.gds&quot;)</code><br>
 <code>out_pca1&lt;-snpgdsPCA(genofile)</code><br></p>
 
-<p>Generate a plot (e.g. for axes 1 and 2):<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Generate a plot (e.g. for axes 1 and 2):<br>
 <code>plot(out_pca1$eigenvect[,1],out_pca1$eigenvect[,2], </code><br>
 <code>xlab=paste(&quot;PC 1 - &quot;,round(out_pca1$varprop[1]*100,2),&quot;% (option 1)&quot;),</code><br>
 <code>ylab=paste(&quot;PC 2 - &quot;,round(out_pca1$varprop[2]*100,2),&quot;%&quot;),pch=20,cex=2,</code><br>
@@ -193,18 +193,18 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>ifelse(grepl(&quot;VIETNAM&quot;,out_pca1$sample.id),&quot;dodgerblue4&quot;,</code><br>
 <code>ifelse(grepl(&quot;PAKISTAN&quot;,out_pca1$sample.id),&quot;darkslategray4&quot;,&quot;black&quot;)))))))))))))</code><br><br></p>
 
-<p><strong>Option 2 (&quot;adegenet&quot;, using &quot;vcfR&quot;&quot; to load the VCF&quot;)</strong>:<br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><strong>Option 2 (&quot;adegenet&quot;, using &quot;vcfR&quot;&quot; to load the VCF&quot;)</strong>:<br></p>
 
-<p>Read your VCF file and perform the PCA:
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Read your VCF file and perform the PCA:
 <code>library(&quot;adegenet&quot;)<br>
 <code>library(vcfR)<br>
 <code>genofile &lt;- vcfR2genlight(vcfRfile)<br>
 <code>out_pca2 &lt;- dudi.pca(genofile,cent=FALSE,scale=FALSE,scannf=FALSE,nf=5)<br></p>
 
-<p>Compute the explained part of variance:<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Compute the explained part of variance:<br>
 <code>propvarexp=rbind(out_pca2$eig/sum(out_pca2$eig),cumsum(out_pca2$eig)/sum(out_pca2$eig))</code><br></p>
 
-<p>Generate a plot (e.g. for axes 1 and 2):<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Generate a plot (e.g. for axes 1 and 2):<br>
 <code>plot(out_pca2$li[,1],out_pca2$li[,2], </code><br>
 <code>xlab=paste(&quot;PC 1 - &quot;,round(propvarexp[1,1]*100,2),&quot;% (option2)&quot;),</code><br>
 <code>ylab=paste(&quot;PC 2 - &quot;,round(propvarexp[1,2]*100,2),&quot;%&quot;),pch=20,cex=2,</code><br>
@@ -221,13 +221,13 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>ifelse(grepl(&quot;VIETNAM&quot;,rownames(out_pca2$tab)),&quot;dodgerblue4&quot;,</code><br>
 <code>ifelse(grepl(&quot;PAKISTAN&quot;,rownames(out_pca2$tab)),&quot;darkslategray4&quot;,&quot;black&quot;)))))))))))))</code><br></p>
 
-<p>Using one of these two methods, generate a plot containing 4 panels (PC 1 &amp; 2, PC 1 &amp; 3, PC 1 &amp; 4 and PC 2 &amp; 3). If possible, continue to work on this small piece of code to automatically add an arrow pointing to the reference genome &quot;MN908947&quot; isolated from one of the first patients in Wuhan (Wu et al. 2020 Nature). </p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Using one of these two methods, generate a plot containing 4 panels (PC 1 &amp; 2, PC 1 &amp; 3, PC 1 &amp; 4 and PC 2 &amp; 3). If possible, continue to work on this small piece of code to automatically add an arrow pointing to the reference genome &quot;MN908947&quot; isolated from one of the first patients in Wuhan (Wu et al. 2020 Nature). </p>
 
 <h3>Step 5: Compute base content over the reference genome (Wu et al. 2020 Nature)<br></h3>
 
-<p>In general, when we start to work on a new species. One of the first analysis we do is to look at the quality of the reference genome (assembly), in particular, the proportion of unknown nucleotide bases (N%) in the assembly. Here an example how to compute this proportion, after reading the data with seqinr.</p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">In general, when we start to work on a new species. One of the first analysis we do is to look at the quality of the reference genome (assembly), in particular, the proportion of unknown nucleotide bases (N%) in the assembly. Here an example how to compute this proportion, after reading the data with seqinr.</p>
 
-<p><strong>Missing data or base composition over the whole genome</strong><br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><strong>Missing data or base composition over the whole genome</strong><br>
 <code>library(&quot;seqinr&quot;)</code><br>
 <code>refgenome &lt;- read.fasta(file = &quot;reference_genome_wuhan-hu-1.fasta&quot;)</code><br>
 <code>refgenomeseq &lt;- refgenome[[1]]  </code><br>
@@ -235,10 +235,10 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>Ncontent=N/length(refgenomeseq)</code><br>
 <code>print(paste(&quot;Ncontent:&quot;,Ncontent))</code><br></p>
 
-<p>What do you conclude regarding the quality of the sequence based on the N%? <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">What do you conclude regarding the quality of the sequence based on the N%? <br>
 Modify this code to look the base content for each nucleobase (A,C,G,T for DNA, A,C,G,U for RNA). Given that the SARS-CoV2 is a single-stranded RNA virus, do you see something surprising? How can we explain this?<br></p>
 
-<p><strong>Base content using sliding windows along the whole genome</strong><br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><strong>Base content using sliding windows along the whole genome</strong><br>
 <code>out=NULL</code><br>
 <code>starts_win &lt;- seq(1, length(refgenomeseq)-500, by = 500)</code><br>
 <code>n &lt;- length(starts_win)</code><br>
@@ -258,7 +258,7 @@ Modify this code to look the base content for each nucleobase (A,C,G,T for DNA, 
 <code>out=as.data.frame(out)</code><br>
 <code>colnames(out)=c(&quot;position&quot;,&quot;Acontent&quot;,&quot;Tcontent&quot;,&quot;Ccontent&quot;,&quot;Gcontent&quot;,&quot;GCcontent&quot;)</code><br></p>
 
-<p>Generate a plot showing the variation of the base composition along the SARS-CoV2 genome: <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Generate a plot showing the variation of the base composition along the SARS-CoV2 genome: <br>
 <code>plot(100*out$GCcontent~out$position,type=&quot;l&quot;,lwd=2,lty=2,ylim=c(0,100),xlab=&quot;position&quot;,</code><br>
 <code>ylab=&quot;Base composition (%) - 500b sliding windows&quot;)+</code><br>
 <code>lines(100*out$Acontent~out$position,type=&quot;l&quot;,col=&quot;blue&quot;)+</code><br>
@@ -272,18 +272,18 @@ Modify this code to look the base content for each nucleobase (A,C,G,T for DNA, 
 <code>text(x=tail(out$position,n=1)+300,y=tail(out$Ccontent,n=1)*100,label=&quot;C&quot;,col=&quot;red&quot;)+</code><br>
 <code>text(x=tail(out$position,n=1)+400,y=tail(out$GCcontent,n=1)*100,label=&quot;G+C&quot;,col=&quot;black&quot;)</code><br></p>
 
-<p>Based on the provided gff (<em>GCF_009858895.2_ASM985889v3_genomic.gff.mod.CDS</em>) corresponding to the reference genome, try to write a piece of code providing the location of the different CDS on the previous plot, highlighting the gene YP_009724390, the gene coding for the Spike glyprotein, which is the protein initiating the infection by binding the human ACE2 receptor. Try also to indicate the per-gene GC content on the plot. <br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Based on the provided gff (<em>GCF_009858895.2_ASM985889v3_genomic.gff.mod.CDS</em>) corresponding to the reference genome, try to write a piece of code providing the location of the different CDS on the previous plot, highlighting the gene YP_009724390, the gene coding for the Spike glyprotein, which is the protein initiating the infection by binding the human ACE2 receptor. Try also to indicate the per-gene GC content on the plot. <br></p>
 
 <h3>Step 6: genetic variation along the genome</h3>
 
-<p>The distribution of the number of SNPs along the genome is also quite informative.<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">The distribution of the number of SNPs along the genome is also quite informative.<br>
 Using a new vcf file (<em>aligned.100genomes.v2.200bases2EndsExcluded.fastacorr.vcf.clean</em>, corrected to take into account some minor shifts in the genome positions) corresponding to the variants observed in our subset of 100 genomes, show the spatial distribution of the variants along the SARS-CoV2 genome.<br></p>
 
-<p>Read the file and generate an histogram<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Read the file and generate an histogram<br>
 <code>vcfcor=read.table(&quot;aligned.100genomes.v2.200bases2EndsExcluded.fastacorr.vcf.clean&quot;)</code><br>
 <code>hist(vcfcor$V2,breaks=29,col=&quot;lightgrey&quot;,border=FALSE,main=&quot;&quot;,xlab=&quot;Position - SARS-CoV2&quot;)</code><br></p>
 
-<p>Add another layer to show the position of the SNPS, with different colors for transitions vs. transvertions<br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Add another layer to show the position of the SNPS, with different colors for transitions vs. transvertions<br>
 <code>for(i in 1:nrow(vcfcor)){</code><br>
 <code>|  pos=vcfcor[i,2]</code><br>
 <code>|  baseref=vcfcor[i,4]</code><br>
@@ -296,11 +296,11 @@ Using a new vcf file (<em>aligned.100genomes.v2.200bases2EndsExcluded.fastacorr.
 <code>|}
 <code>text(x=29800,y=-0.5,labels=&quot;SNPs&quot;,cex=0.65,pos=4)</code><br></p>
 
-<p>We can observe a clear hotspot of SNPs at one specific location of the genome. But the output seems a little bit different from those shown in the nextstrain webpage (<a href="https://nextstrain.org/ncov/global">https://nextstrain.org/ncov/global</a> considering &quot;Events&quot; + &quot;NT&quot;). What do you think? You can of course reopen your alignment in your alignement viewer to reach a conclusion. <br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">We can observe a clear hotspot of SNPs at one specific location of the genome. But the output seems a little bit different from those shown in the nextstrain webpage (<a href="https://nextstrain.org/ncov/global">https://nextstrain.org/ncov/global</a> considering &quot;Events&quot; + &quot;NT&quot;). What do you think? You can of course reopen your alignment in your alignement viewer to reach a conclusion. <br></p>
 
-<p><strong>An additional conventional verification of a VCF file is to compute the ratio of transition vs. transversion (ts/tv)</strong> <br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><strong>An additional conventional verification of a VCF file is to compute the ratio of transition vs. transversion (ts/tv)</strong> <br></p>
 
-<p>Note: Mutation is a not a completely random process, transitions (C &lt;=&gt; T or G &lt;=&gt; A) are much more frequent than transversions (corresponding to all the other mutations possible). As a consequence, the ratio of transversion vs. transition is expected to be a good proxy of the quality of the calling (at least, when the number of mutations is non-limiting). <br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Note: Mutation is a not a completely random process, transitions (C &lt;=&gt; T or G &lt;=&gt; A) are much more frequent than transversions (corresponding to all the other mutations possible). As a consequence, the ratio of transversion vs. transition is expected to be a good proxy of the quality of the calling (at least, when the number of mutations is non-limiting). <br></p>
 
 <p>Compute the ts/tv ratio based on all variants detected over all SARS-CoV2 genomes we previously investigated: <br>
 <code>A &lt;- subset(vcfcor, V4==&quot;A&quot;)</code><br>
@@ -315,12 +315,12 @@ Using a new vcf file (<em>aligned.100genomes.v2.200bases2EndsExcluded.fastacorr.
 <code>tstvratiowhole=totaltransitions/(nrow(vcfcor)-totaltransitions)</code><br>
 <code>print(paste(&quot;ts/tv ratio:&quot;,tstvratiowhole))</code><br></p>
 
-<p>Using this code, what is the value of ts/tv ratio? <br>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Using this code, what is the value of ts/tv ratio? <br>
 Try to now create a piece of code to compute the ts/tv ratio over the genome using a sliding window approach (given the limited number of variants available, please use windows of &gt;= 2.5kb in length). According to you, in which region the ts/tv ratio is informative about something bad with the data? Is it consistent with your previous investigations? As a consequence, what can you do to improve all our previous analyses? <br></p>
 
 <h3>Interested to know more about the virus (including genetics &amp; evolution)?</h3>
 
-<p>Interesting websites:<br></p>
+<p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Interesting websites:<br></p>
 
 <ul>
 <li>NextStrain: <a href="https://nextstrain.org/ncov/">https://nextstrain.org/ncov/</a> <br></li>
