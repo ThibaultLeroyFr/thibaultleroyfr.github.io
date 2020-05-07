@@ -136,7 +136,7 @@ How long did the alignment take? <br></p>
 <code>ifelse(grepl(&quot;VIETNAM&quot;,sarscov2$tip.label),&quot;dodgerblue4&quot;,</code><br>
 <code>ifelse(grepl(&quot;PAKISTAN&quot;,sarscov2$tip.label),&quot;darkslategray4&quot;,&quot;black&quot;)))))))))))),</code><br>
 <code>edge.color=&quot;darkgrey&quot;)+ add.scale.bar(x=0.025,y=0,col=&quot;black&quot;,lcol=&quot;darkgrey&quot;)</code><br><p>
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://thibaultleroyfr.github.io/img/SARS_CoV2_tree_beforecleaning.png" width="900" ><br>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://thibaultleroyfr.github.io/img/SARS_CoV2_tree_beforecleaning.png" width="870" ><br>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Note: you are free to change the commands. Here, the colors are set to be more or less in line with those used by Nextstrain (&quot; <a href="https://nextstrain.org/ncov">https://nextstrain.org/ncov</a> &quot;). I strongly encourage you to spend some time to visit this website. Nextstrain is an excellent tool (the best to date and to my knowledge) for genetic data visualization of the SARS-CoV2 genomes. In particular, Nextstrain gives an explicit time information (i.e. when the strain was isolated, &quot;TIME&quot;), in addition of course to the sequence divergence. Combining the &quot;clock&quot; and the &quot;time&quot; options, Nextstrain can for example report you an estimate of the average number of substitions per year. <br></p>
 
@@ -178,7 +178,7 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>edge.color="darkgrey",font=ifelse(grepl("MN908947",sarscov2$tip.label),2,1))+ add.scale.bar(x=0.025,y=0,col="black",lcol="darkgrey")<\code><br><\p>
 
 
-<img style="float: left; margin: 0px 15px 15px 0px;" src="https://thibaultleroyfr.github.io/img/SARS_CoV2_tree_beforeaftercleaning" width="900" ><br>
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://thibaultleroyfr.github.io/img/SARS_CoV2_tree_beforeaftercleaning" width="870" ><br>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Note: In the case of the SARS-CoV2, it is quite easy to visualize the alignment (30kb genome only). But when we work on large genomes (through whole-genome alignments, or more likely read mapping), it is impossible to visually check these errors. But such errors are widespread (e.g. misidentification of one or several individuals, individuals with a lot of private alleles corresponding to sequence errors rather than true variants, etc...). Some fast methods can be really helpful to identify these weird individuals. In the following section, I introduce the importance of Principal Component Analyses. <br></p>
 
