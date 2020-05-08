@@ -158,24 +158,42 @@ If you can&#39;t generate this file this file is also available on moodle &quot;
 Redo the step 2 based on this new alignement. If possible, generate a figure with the two trees side by side and highlight the reference genome &quot;MN908947&quot; isolated from one of the first patients in Wuhan (Wu et al. 2020 Nature). <br></p>
 
 <p style="margin: 100px 15px 15px 10px;font-size:16px;line-height:20px;style=color:red;">
-<code>par(mfrow=c(1,2))<\code><br>
-<code>plot(sarscov2before, main="BEFORE CLEANING ALIGNMENTS",type="cladogram",cex=0.5,<\code><br>
-<code>tip.color=ifelse(grepl("CHINA",sarscov2$tip.label),"darkblue",ifelse(grepl("USA",sarscov2$tip.label),"red3",<\code><br>
-<code>ifelse(grepl("SPAIN",sarscov2$tip.label),"gold3",ifelse(grepl("SWEDEN",sarscov2$tip.label),"orange",<\code><br>
-<code>ifelse(grepl("BRAZIL",sarscov2$tip.label),"darkorange3",ifelse(grepl("PERU",sarscov2$tip.label),"darkorange4",<\code><br>
-<code>ifelse(grepl("INDIA",sarscov2$tip.label),"blue",ifelse(grepl("AUSTRALIA",sarscov2$tip.label),"dodgerblue3",<\code><br>
-<code>ifelse(grepl("TAIWAN",sarscov2$tip.label),"midnightblue",ifelse(grepl("NEPAL",sarscov2$tip.label),"darkslateblue",<\code><br>
-<code>ifelse(grepl("VIETNAM",sarscov2$tip.label),"dodgerblue4",ifelse(grepl("PAKISTAN",sarscov2$tip.label),"darkslategray4","black")))))))))))),<\code><br>
-<code>edge.color="darkgrey",font=ifelse(grepl("MN908947",sarscov2$tip.label),2,1))+ add.scale.bar(x=0.025,y=0,col="black",lcol="darkgrey")<\code><br>
+<code>par(mfrow=c(1,2))</code><br>
+<code>plot(sarscov2before, main="BEFORE CLEANING ALIGNMENTS",</code><br>
+<code>type="cladogram",cex=0.5,</code><br>
+<code>tip.color=ifelse(grepl("CHINA",sarscov2$tip.label),"darkblue",
+<code>ifelse(grepl("USA",sarscov2$tip.label),"red3",</code><br>
+<code>ifelse(grepl("SPAIN",sarscov2$tip.label),"gold3",</code><br>
+<code>ifelse(grepl("SWEDEN",sarscov2$tip.label),"orange",</code><br>
+<code>ifelse(grepl("BRAZIL",sarscov2$tip.label),"darkorange3",</code><br>
+<code>ifelse(grepl("PERU",sarscov2$tip.label),"darkorange4",</code><br>
+<code>ifelse(grepl("INDIA",sarscov2$tip.label),"blue",</code><br>
+<code>ifelse(grepl("AUSTRALIA",sarscov2$tip.label),"dodgerblue3",</code><br>
+<code>ifelse(grepl("TAIWAN",sarscov2$tip.label),"midnightblue",</code><br>
+<code>ifelse(grepl("NEPAL",sarscov2$tip.label),"darkslateblue",</code><br>
+<code>ifelse(grepl("VIETNAM",sarscov2$tip.label),"dodgerblue4",</code><br>
+<code>ifelse(grepl("PAKISTAN",sarscov2$tip.label),"darkslategray4","black")))))))))))),</code><br>
+<code>edge.color="darkgrey",</code><br>
+<code>font=ifelse(grepl("MN908947",sarscov2$tip.label),2,1))+ </code><br>
+<code>add.scale.bar(x=0.025,y=0,col="black",lcol="darkgrey")</code><br>
 
-<code>plot(sarscov2, main="AFTER CLEANING ALIGNMENTS",type="cladogram",cex=0.5,<\code><br>
-<code>tip.color=ifelse(grepl("CHINA",sarscov2$tip.label),"darkblue",ifelse(grepl("USA",sarscov2$tip.label),"red3",<\code><br>
-<code>ifelse(grepl("SPAIN",sarscov2$tip.label),"gold3",ifelse(grepl("SWEDEN",sarscov2$tip.label),"orange",<\code><br>
-<code>ifelse(grepl("BRAZIL",sarscov2$tip.label),"darkorange3",ifelse(grepl("PERU",sarscov2$tip.label),"darkorange4",<\code><br>
-<code>ifelse(grepl("INDIA",sarscov2$tip.label),"blue",ifelse(grepl("AUSTRALIA",sarscov2$tip.label),"dodgerblue3",<\code><br>
-<code>ifelse(grepl("TAIWAN",sarscov2$tip.label),"midnightblue",ifelse(grepl("NEPAL",sarscov2$tip.label),"darkslateblue",<\code><br>
-<code>ifelse(grepl("VIETNAM",sarscov2$tip.label),"dodgerblue4",ifelse(grepl("PAKISTAN",sarscov2$tip.label),"darkslategray4","black")))))))))))),<\code><br>
-<code>edge.color="darkgrey",font=ifelse(grepl("MN908947",sarscov2$tip.label),2,1))+ add.scale.bar(x=0.025,y=0,col="black",lcol="darkgrey")<\code><br><\p>
+<code>plot(sarscov2, main="AFTER CLEANING ALIGNMENTS",
+<code>type="cladogram",cex=0.5,</code><br>
+<code>tip.color=ifelse(grepl("CHINA",sarscov2$tip.label),"darkblue",</code><br>
+<code>ifelse(grepl("USA",sarscov2$tip.label),"red3",</code><br>
+<code>ifelse(grepl("SPAIN",sarscov2$tip.label),"gold3",</code><br>
+<code>ifelse(grepl("SWEDEN",sarscov2$tip.label),"orange",</code><br>
+<code>ifelse(grepl("BRAZIL",sarscov2$tip.label),"darkorange3",</code><br>
+<code>ifelse(grepl("PERU",sarscov2$tip.label),"darkorange4",</code><br>
+<code>ifelse(grepl("INDIA",sarscov2$tip.label),"blue",</code><br>
+<code>ifelse(grepl("AUSTRALIA",sarscov2$tip.label),"dodgerblue3",</code><br>
+<code>ifelse(grepl("TAIWAN",sarscov2$tip.label),"midnightblue",</code><br>
+<code>ifelse(grepl("NEPAL",sarscov2$tip.label),"darkslateblue",</code><br>
+<code>ifelse(grepl("VIETNAM",sarscov2$tip.label),"dodgerblue4",</code><br>
+<code>ifelse(grepl("PAKISTAN",sarscov2$tip.label),"darkslategray4","black")))))))))))),</code><br>
+<code>edge.color="darkgrey",</code><br>
+<code>font=ifelse(grepl("MN908947",sarscov2$tip.label),2,1))+ </code><br>
+<code>add.scale.bar(x=0.025,y=0,col="black",lcol="darkgrey")</code><br><\p>
 
 
 <img style="float: left; margin: 0px 15px 15px 0px;" src="https://thibaultleroyfr.github.io/img/SARS_CoV2_tree_beforeaftercleaning.png" width="820" ><br>
