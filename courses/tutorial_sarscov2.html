@@ -145,6 +145,8 @@ How long did the alignment take? <br></p>
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Open your alignment on a sequence alignment software (you can download aliview, bioedit, etc...).<br>
 What can you observe on these alignments?<br></p>
 
+<img style="float: left; margin: 0px 15px 15px 0px;" src="https://thibaultleroyfr.github.io/img/alignement_aliview_start.png" width="820" ><br>	
+	
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Try to remove the 200 first and the last 200 positions of the alignments. There are plenty of solutions to do this, more or less automatically, here an example of how to do this using a one line perl command (to be executed <strong>in your terminal</strong>): <br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><code>perl -0076 -e &#39;while (&lt;&gt;) { chomp; my ($name, @parts) = split /\n/; my $seq = join &quot;&quot;, @parts; </code><br>
@@ -161,7 +163,7 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>par(mfrow=c(1,2))</code><br>
 <code>plot(sarscov2before, main="BEFORE CLEANING ALIGNMENTS",</code><br>
 <code>type="cladogram",cex=0.5,</code><br>
-<code>tip.color=ifelse(grepl("CHINA",sarscov2$tip.label),"darkblue",
+<code>tip.color=ifelse(grepl("CHINA",sarscov2$tip.label),"darkblue",</code><br>
 <code>ifelse(grepl("USA",sarscov2$tip.label),"red3",</code><br>
 <code>ifelse(grepl("SPAIN",sarscov2$tip.label),"gold3",</code><br>
 <code>ifelse(grepl("SWEDEN",sarscov2$tip.label),"orange",</code><br>
@@ -177,7 +179,7 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>font=ifelse(grepl("MN908947",sarscov2$tip.label),2,1))+ </code><br>
 <code>add.scale.bar(x=0.025,y=0,col="black",lcol="darkgrey")</code><br>
 
-<code>plot(sarscov2, main="AFTER CLEANING ALIGNMENTS",
+<code>plot(sarscov2, main="AFTER CLEANING ALIGNMENTS",</code><br>
 <code>type="cladogram",cex=0.5,</code><br>
 <code>tip.color=ifelse(grepl("CHINA",sarscov2$tip.label),"darkblue",</code><br>
 <code>ifelse(grepl("USA",sarscov2$tip.label),"red3",</code><br>
