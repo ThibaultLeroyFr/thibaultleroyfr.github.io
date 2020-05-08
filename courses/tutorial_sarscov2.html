@@ -291,7 +291,7 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>ifelse(grepl("VIETNAM",ccm_pca$sample.id),"dodgerblue4",</code><br>
 <code>ifelse(grepl("PAKISTAN",ccm_pca$sample.id),"darkslategray4","black")))))))))))))</code><br>
 <code><b>arrows(x=subsample[1],y1=subsample[2],x1=subsample[1],</code><br>
-<code>y=subsample[2]-0.1*(max(ccm_pca$eigenvect[,2])-min(ccm_pca$eigenvect[,2])),
+<code>y=subsample[2]-0.1*(max(ccm_pca$eigenvect[,2])-min(ccm_pca$eigenvect[,2])),</code><br>
 <code>length=0.1,lwd=2,col="deeppink4")</b></code><br><br>
 
 <code>plot(ccm_pca$eigenvect[,1],ccm_pca$eigenvect[,3], </code><br>
@@ -350,7 +350,7 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code><b>arrows(x=subsample[2],y1=subsample[3],x1=subsample[2],</code><br>
 <code>y=subsample[3]-0.1*(max(ccm_pca$eigenvect[,3])-min(ccm_pca$eigenvect[,3])),</code><br>
 <code>length=0.1,lwd=2,col="deeppink4")</b></code><br><br>
-<img style="float: left; margin: 10px 15px 15px 10px;" src="https://thibaultleroyfr.github.io/img/SARS-CoV2_PCA_option2.png" width="850" ><br>	
+<img style="float: left; margin: 10px 15px 15px 10px;" src="https://thibaultleroyfr.github.io/img/SARS-CoV2_PCA_option1.png" width="850" ><br>	
 
 
 <h3>Step 5: Compute base content over the reference genome (Wu et al. 2020 Nature)<br></h3>
