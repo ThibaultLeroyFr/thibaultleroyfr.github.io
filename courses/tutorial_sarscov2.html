@@ -238,6 +238,8 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>ifelse(grepl(&quot;VIETNAM&quot;,out_pca1$sample.id),&quot;dodgerblue4&quot;,</code><br>
 <code>ifelse(grepl(&quot;PAKISTAN&quot;,out_pca1$sample.id),&quot;darkslategray4&quot;,&quot;black&quot;)))))))))))))</code><br><br></p>
 
+<img style="float: left; margin: 10px 15px 15px 10px;" src="https://thibaultleroyfr.github.io/img/SARS-CoV2_PCA_option1_base.png" width="850" ><br>	
+
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;"><strong>Option 2 (&quot;adegenet&quot;, using &quot;vcfR&quot;&quot; to load the VCF&quot;)</strong>:<br></p>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Read your VCF file and perform the PCA:<br>
@@ -266,7 +268,41 @@ Redo the step 2 based on this new alignement. If possible, generate a figure wit
 <code>ifelse(grepl(&quot;VIETNAM&quot;,rownames(out_pca2$tab)),&quot;dodgerblue4&quot;,</code><br>
 <code>ifelse(grepl(&quot;PAKISTAN&quot;,rownames(out_pca2$tab)),&quot;darkslategray4&quot;,&quot;black&quot;)))))))))))))</code><br></p>
 
+<img style="float: left; margin: 10px 15px 15px 10px;" src="https://thibaultleroyfr.github.io/img/SARS-CoV2_PCA_option2_base.png" width="850" ><br>	
+	
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Using one of these two methods, generate a plot containing 4 panels (PC 1 &amp; 2, PC 1 &amp; 3, PC 1 &amp; 4 and PC 2 &amp; 3). If possible, continue to work on this small piece of code to automatically add an arrow pointing to the reference genome &quot;MN908947&quot; isolated from one of the first patients in Wuhan (Wu et al. 2020 Nature). </p>
+
+<p style="margin: 100px 15px 15px 10px;font-size:16px;line-height:20px;color:lightsalmon;">
+<code>par(mfrow=c(2,2))</code><br>
+<code>subsample=ccm_pca$eigenvect[grep("MN908947", ccm_pca$sample.id),]</code><br>
+<code>plot(ccm_pca$eigenvect[,1],ccm_pca$eigenvect[,2],</code><br>
+<code>xlab=paste("PC 1 - ",round(ccm_pca$varprop[1]*100,2),"% (option 1)"),</code><br>
+<code>ylab=paste("PC 2 - ",round(ccm_pca$varprop[2]*100,2),"%"),</code><br>
+<code>pch=20,cex=2,col=ifelse(grepl("CHINA",ccm_pca$sample.id),"darkblue",</code><br>
+<code>ifelse(grepl("USA",ccm_pca$sample.id),"red3",</code><br>
+<code>ifelse(grepl("SPAIN",ccm_pca$sample.id),"gold3",</code><br>
+<code>ifelse(grepl("SWEDEN",ccm_pca$sample.id),"orange",</code><br>
+<code>ifelse(grepl("BRAZIL",ccm_pca$sample.id),"darkorange3",</code><br>
+<code>ifelse(grepl("PERU",ccm_pca$sample.id),"darkorange4",</code><br>
+<code>ifelse(grepl("INDIA",ccm_pca$sample.id),"blue",</code><br>
+<code>ifelse(grepl("AUSTRALIA",ccm_pca$sample.id),"dodgerblue3",</code><br>
+<code>ifelse(grepl("TAIWAN",ccm_pca$sample.id),"midnightblue",</code><br>
+<code>ifelse(grepl("NEPAL",ccm_pca$sample.id),"darkslateblue",</code><br>
+<code>ifelse(grepl("VIETNAM",ccm_pca$sample.id),"dodgerblue4",</code><br>
+<code>ifelse(grepl("PAKISTAN",ccm_pca$sample.id),"darkslategray4","black")))))))))))))</code><br>
+<code><b>arrows(x=subsample[1],y1=subsample[2],x1=subsample[1],</code><br>
+<code>y=subsample[2]-0.1*(max(ccm_pca$eigenvect[,2])-min(ccm_pca$eigenvect[,2])),
+<code>length=0.1,lwd=2,col="deeppink4")</b></code><br>
+
+plot(ccm_pca$eigenvect[,1],ccm_pca$eigenvect[,3], xlab=paste("PC 1 - ",round(ccm_pca$varprop[1]*100,2),"% (option 1)"),ylab=paste("PC 3 - ",round(ccm_pca$varprop[3]*100,2),"%"),pch=20,cex=2,col=ifelse(grepl("CHINA",ccm_pca$sample.id),"darkblue",ifelse(grepl("USA",ccm_pca$sample.id),"red3",ifelse(grepl("SPAIN",ccm_pca$sample.id),"gold3",ifelse(grepl("SWEDEN",ccm_pca$sample.id),"orange",ifelse(grepl("BRAZIL",ccm_pca$sample.id),"darkorange3",ifelse(grepl("PERU",ccm_pca$sample.id),"darkorange4",ifelse(grepl("INDIA",ccm_pca$sample.id),"blue",ifelse(grepl("AUSTRALIA",ccm_pca$sample.id),"dodgerblue3",ifelse(grepl("TAIWAN",ccm_pca$sample.id),"midnightblue",ifelse(grepl("NEPAL",ccm_pca$sample.id),"darkslateblue",ifelse(grepl("VIETNAM",ccm_pca$sample.id),"dodgerblue4",ifelse(grepl("PAKISTAN",ccm_pca$sample.id),"darkslategray4","black")))))))))))))
+arrows(x=subsample[1],y1=subsample[3],x1=subsample[1],y=subsample[3]-0.1*(max(ccm_pca$eigenvect[,3])-min(ccm_pca$eigenvect[,3])),length=0.1,lwd=2,col="deeppink4")
+
+plot(ccm_pca$eigenvect[,1],ccm_pca$eigenvect[,4], xlab=paste("PC 1 - ",round(ccm_pca$varprop[1]*100,2),"% (option 1)"),ylab=paste("PC 4 - ",round(ccm_pca$varprop[4]*100,2),"%"),pch=20,cex=2,col=ifelse(grepl("CHINA",ccm_pca$sample.id),"darkblue",ifelse(grepl("USA",ccm_pca$sample.id),"red3",ifelse(grepl("SPAIN",ccm_pca$sample.id),"gold3",ifelse(grepl("SWEDEN",ccm_pca$sample.id),"orange",ifelse(grepl("BRAZIL",ccm_pca$sample.id),"darkorange3",ifelse(grepl("PERU",ccm_pca$sample.id),"darkorange4",ifelse(grepl("INDIA",ccm_pca$sample.id),"blue",ifelse(grepl("AUSTRALIA",ccm_pca$sample.id),"dodgerblue3",ifelse(grepl("TAIWAN",ccm_pca$sample.id),"midnightblue",ifelse(grepl("NEPAL",ccm_pca$sample.id),"darkslateblue",ifelse(grepl("VIETNAM",ccm_pca$sample.id),"dodgerblue4",ifelse(grepl("PAKISTAN",ccm_pca$sample.id),"darkslategray4","black")))))))))))))
+arrows(x=subsample[1],y1=subsample[4],x1=subsample[1],y=subsample[4]-0.1*(max(ccm_pca$eigenvect[,4])-min(ccm_pca$eigenvect[,4])),length=0.1,lwd=2,col="deeppink4")
+
+plot(ccm_pca$eigenvect[,2],ccm_pca$eigenvect[,3], xlab=paste("PC 2 - ",round(ccm_pca$varprop[2]*100,2),"% (option 1)"),ylab=paste("PC 3 - ",round(ccm_pca$varprop[3]*100,2),"%"),pch=20,cex=2,col=ifelse(grepl("CHINA",ccm_pca$sample.id),"darkblue",ifelse(grepl("USA",ccm_pca$sample.id),"red3",ifelse(grepl("SPAIN",ccm_pca$sample.id),"gold3",ifelse(grepl("SWEDEN",ccm_pca$sample.id),"orange",ifelse(grepl("BRAZIL",ccm_pca$sample.id),"darkorange3",ifelse(grepl("PERU",ccm_pca$sample.id),"darkorange4",ifelse(grepl("INDIA",ccm_pca$sample.id),"blue",ifelse(grepl("AUSTRALIA",ccm_pca$sample.id),"dodgerblue3",ifelse(grepl("TAIWAN",ccm_pca$sample.id),"midnightblue",ifelse(grepl("NEPAL",ccm_pca$sample.id),"darkslateblue",ifelse(grepl("VIETNAM",ccm_pca$sample.id),"dodgerblue4",ifelse(grepl("PAKISTAN",ccm_pca$sample.id),"darkslategray4","black")))))))))))))
+arrows(x=subsample[2],y1=subsample[3],x1=subsample[2],y=subsample[3]-0.1*(max(ccm_pca$eigenvect[,3])-min(ccm_pca$eigenvect[,3])),length=0.1,lwd=2,col="deeppink4")
+
 
 <h3>Step 5: Compute base content over the reference genome (Wu et al. 2020 Nature)<br></h3>
 
