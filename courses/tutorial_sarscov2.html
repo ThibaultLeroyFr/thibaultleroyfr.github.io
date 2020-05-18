@@ -421,7 +421,8 @@ Modify this code to look the base content for each nucleobase (A,C,G,T for DNA, 
 <code>|  T<- sum(lengths(regmatches(geneseq, gregexpr("t",geneseq))))</code><br>
 <code>|  A<- sum(lengths(regmatches(geneseq, gregexpr("a",geneseq))))</code><br>
 <code>|  GCcontent <- sum(C,G)/sum(A,C,G,T)*100</code><br>
-<code>|  text(x=start+(end-start)/2,y=yendline+3,labels=paste(round(GCcontent,1),"%",sep=""),cex=0.55)</code><br>
+<code>|  text(x=start+(end-start)/2,y=yendline+3,</code><br>
+<code>|  labels=paste(round(GCcontent,1),"%",sep=""),cex=0.55)</code><br>
 <code>|}</code><br></p>
 <img style="float: left; margin: 10px 15px 15px 10px;" src="https://thibaultleroyfr.github.io/img/SARS-CoV2_BaseContent.png" width="850" ><br>	
 
