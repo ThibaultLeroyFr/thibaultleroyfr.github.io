@@ -404,6 +404,29 @@ Modify this code to look the base content for each nucleobase (A,C,G,T for DNA, 
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">Based on the provided gff (<em>GCF_009858895.2_ASM985889v3_genomic.gff.mod.CDS</em>) corresponding to the reference genome, try to write a piece of code providing the location of the different CDS on the previous plot, highlighting the gene YP_009724390, the gene coding for the Spike glyprotein, which is the protein initiating the infection by binding the human ACE2 receptor. Try also to indicate the per-gene GC content on the plot. <br></p>
 
+<p style="margin: 100px 15px 15px 10px;font-size:16px;line-height:20px;color:lightsalmon;">
+<code>gff=read.table("GCF_009858895.2_ASM985889v3_genomic.gff.mod.CDS")</code><br>
+<code>listcolor=rainbow(n=12)</code><br>
+<code>for(i in 1:nrow(gff)){</code><br>
+<code>|  start=gff[i,4]</code><br>
+<code>|  end=gff[i,5]</code><br>
+<code>|  ypos=runif(1,min=55,max=85)</code><br>
+<code>|  rect(xleft=start,xright=end,ytop=ypos,ybottom=ypos-1.5,</code><br>
+<code>|  lwd=ifelse(grepl("YP_009724390", gff[i,9]),2,0),col=listcolor[i])</code><br>
+<code>|  yendline=runif(1,min=ypos,max=98)</code><br>
+<code>|  segments(x=start+(end-start)/2,y=ypos,x1=start+(end-start)/2,y1=yendline)</code><br>
+<code>|  geneseq=refgenomeseq[start:end]</code><br>
+<code>|  C<- sum(lengths(regmatches(geneseq, gregexpr("c",geneseq))))</code><br>
+<code>|  G<- sum(lengths(regmatches(geneseq, gregexpr("g",geneseq))))</code><br>
+<code>|  T<- sum(lengths(regmatches(geneseq, gregexpr("t",geneseq))))</code><br>
+<code>|  A<- sum(lengths(regmatches(geneseq, gregexpr("a",geneseq))))</code><br>
+<code>|  GCcontent <- sum(C,G)/sum(A,C,G,T)*100</code><br>
+<code>|  text(x=start+(end-start)/2,y=yendline+3,labels=paste(round(GCcontent,1),"%",sep=""),cex=0.55)</code><br>
+<code>|}</code><br></p>
+<img style="float: left; margin: 10px 15px 15px 10px;" src="https://thibaultleroyfr.github.io/img/SARS-CoV2_BaseContent.png" width="850" ><br>	
+
+
+
 <h3>Step 6: genetic variation along the genome</h3>
 
 <p style="margin: 10px 15px 15px 10px;font-size:16px;line-height:20px;">The distribution of the number of SNPs along the genome is also quite informative.<br>
