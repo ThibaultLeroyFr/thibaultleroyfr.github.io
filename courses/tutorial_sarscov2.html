@@ -478,24 +478,26 @@ Try to now create a piece of code to compute the ts/tv ratio over the genome usi
 <code>starts_win <- seq(1, lengthsequence-2500, by = 2500)</code><br>
 <code>n <- length(starts_win)</code><br>
 <code>for (i in 1:n) {</code><br>
-<code>__minregion=starts_win[i]</code><br>
-<code>__maxregion=starts_win[i]+2499</code><br>
-<code>__positionmedian=minregion+(maxregion-minregion)/2</code><br>
-<code>__vcfcorregion <- subset(vcfcor, V2 >= minregion & V2 <= maxregion )</code><br>
-<code>__A <- subset(vcfcorregion, V4=="A")</code><br>
-<code>__C <- subset(vcfcorregion, V4=="C")</code><br>
-<code>__G <- subset(vcfcorregion, V4=="G")</code><br>
-<code>__T <- subset(vcfcorregion, V4=="T")</code><br>
-<code>__transition1<- sum(lengths(regmatches(A$V5, gregexpr("G", A$V5))))</code><br>
-<code>__transition2<- sum(lengths(regmatches(G$V5, gregexpr("A", G$V5))))</code><br>
-<code>__transition3<- sum(lengths(regmatches(C$V5, gregexpr("T", C$V5))))</code><br>
-<code>__transition4<- sum(lengths(regmatches(T$V5, gregexpr("C", T$V5))))</code><br>
-<code>__totaltransitionsregion=sum(transition1,transition2,transition3,transition4)</code><br>
-<code>__tstvratio=totaltransitionsregion/((nrow(vcfcorregion)-totaltransitionsregion))</code><br>
-<code>__tstv=rbind(tstv,cbind(positionmedian,starts_win[i],starts_win[i]+2499,totaltransitionsregion,nrow(vcfcorregion),tstvratio))</code><br>
+<code>|  minregion=starts_win[i]</code><br>
+<code>|  maxregion=starts_win[i]+2499</code><br>
+<code>|  positionmedian=minregion+(maxregion-minregion)/2</code><br>
+<code>|  vcfcorregion <- subset(vcfcor, V2 >= minregion & V2 <= maxregion )</code><br>
+<code>|  A <- subset(vcfcorregion, V4=="A")</code><br>
+<code>|  C <- subset(vcfcorregion, V4=="C")</code><br>
+<code>|  G <- subset(vcfcorregion, V4=="G")</code><br>
+<code>|  T <- subset(vcfcorregion, V4=="T")</code><br>
+<code>|  transition1<- sum(lengths(regmatches(A$V5, gregexpr("G", A$V5))))</code><br>
+<code>|  transition2<- sum(lengths(regmatches(G$V5, gregexpr("A", G$V5))))</code><br>
+<code>|  transition3<- sum(lengths(regmatches(C$V5, gregexpr("T", C$V5))))</code><br>
+<code>|  transition4<- sum(lengths(regmatches(T$V5, gregexpr("C", T$V5))))</code><br>
+<code>|  totaltransitionsregion=sum(transition1,transition2,transition3,transition4)</code><br>
+<code>|  tstvratio=totaltransitionsregion/((nrow(vcfcorregion)-totaltransitionsregion))</code><br>
+<code>|  tstv=rbind(tstv,cbind(positionmedian,starts_win[i],starts_win[i]+2499,</code><br>
+<code>totaltransitionsregion,nrow(vcfcorregion),tstvratio))</code><br>
 <code>}</code><br>
 <code>tstv=as.data.frame(tstv)</code><br>
-<code>colnames(tstv)=c("medianPosWindows","startwindows","endwindows","transitions","totalSNP","tstvratio")</code><br>
+<code>colnames(tstv)=c("medianPosWindows","startwindows","endwindows",</code><br>
+<code>"transitions","totalSNP","tstvratio")</code><br>
 <code>tstv[tstv == Inf] <- 15</code><br>
 
 <code>plot(tstv$tstvratio~tstv$medianPosWindows,type="l",col="orange4",xlim=c(1,30000),</code><br>
@@ -505,14 +507,14 @@ Try to now create a piece of code to compute the ts/tv ratio over the genome usi
 <code>text(x=30000,y=tstvratiowhole+0.2,label="overall",col="navyblue")+</code><br>
 <code>text(x=30000,y=0.8,label="ts/tv<1",col="darkgrey")+</code><br>
 <code>for(i in 1:nrow(tstv)){</code><br>
-<code>__segments(x=tstv[i,2],x1=tstv[i,2],y=0,y1=16,col="grey",lty=2)</code><br>
+<code>|  segments(x=tstv[i,2],x1=tstv[i,2],y=0,y1=16,col="grey",lty=2)</code><br>
 <code>}</code><br>
 
 <code>for(i in 1:nrow(vcfcor)){</code><br>
-<code>__pos=vcfcor[i,2]</code><br>
-<code>__baseref=vcfcor[i,4]</code><br>
-<code>__basealt=vcfcor[i,5]</code><br>
-<code>__segments(x=pos,y=-0.1,x1=pos,y1=-0.5,col=ifelse(baseref=="A" && basealt=="G","red",</code><br>
+<code>|  pos=vcfcor[i,2]</code><br>
+<code>|  baseref=vcfcor[i,4]</code><br>
+<code>|  basealt=vcfcor[i,5]</code><br>
+<code>|  segments(x=pos,y=-0.1,x1=pos,y1=-0.5,col=ifelse(baseref=="A" && basealt=="G","red",</code><br>
 <code>ifelse(baseref=="G" && basealt=="A","red",ifelse(baseref=="C" && basealt=="T","red",</code><br>
 <code>ifelse(baseref=="T" && basealt=="C","red","blue")))))</code><br>
 <code>}</code><br></p>
