@@ -46,7 +46,7 @@ li a {
 
 .menu-deroulant > a:after{
   content: '❯';
-  font-size: 15px;
+  font-size: 12px;
   margin-left: 7px;
   display: inline-block;
 }
