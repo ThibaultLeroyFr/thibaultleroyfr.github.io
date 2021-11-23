@@ -55,7 +55,6 @@ li a {
 .sous-menu {
   margin-top: var(--hauteur-menu);
   width: 100%;
-  font-size: 11px;
   text-align: left;
   background-color: white;
   border-radius: 2px;
