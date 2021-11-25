@@ -162,3 +162,10 @@ nav > ul > li:hover > a{
 .sous-menu:hover > .sous-menu2 {
   animation: apparitionSousMenu2 1s forwards;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
