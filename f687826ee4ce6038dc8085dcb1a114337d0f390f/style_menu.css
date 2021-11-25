@@ -26,7 +26,7 @@ nav ul {
 }
 
 nav > ul > li {
-  background-color: white;
+  background-color: black;
   position: relative;
   height: 100%;
   flex: 1;
@@ -41,7 +41,7 @@ nav > ul > li > a {
 
 li a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .menu-deroulant > a:after{
@@ -56,7 +56,7 @@ li a {
   margin-top: var(--hauteur-menu);
   width: 100%;
   text-align: left;
-  background-color: white;
+  background-color: black;
   border-radius: 2px;
   overflow: hidden;
   max-height: 0;
@@ -98,7 +98,7 @@ nav > ul > li:hover > a{
 }
 
 .sous-menu > li:hover > a {
-  color: white;
+  color: black;
 }
 
 .sous-menu2 > li:hover {
@@ -106,7 +106,7 @@ nav > ul > li:hover > a{
 }
 
 .sous-menu2 > li:hover > a {
-  color: white;
+  color: black;
 }
 
 
