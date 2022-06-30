@@ -1,4 +1,4 @@
-This GitHub repository contains all the scripts (perl, R, and bash) and programs to reproduce the work done by *Shang et al. 2021* ("Conserved drivers of genomic landscapes of differentiation 
+This GitHub repository contains all the scripts (perl, R, and bash) and programs to reproduce the work done by _Shang et al. 2021_ ("Conserved drivers of genomic landscapes of differentiation 
 across Populus divergence gradient", BioRxiv, [available here](https://www.biorxiv.org/content/10.1101/2021.08.26.457771v2)).
 
 The programs and related analysis are sorted in that order:<br>
