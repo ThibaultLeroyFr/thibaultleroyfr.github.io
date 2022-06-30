@@ -12,5 +12,5 @@ The programs and related analysis are sorted in that order:<br>
 * 07.fd
 * 08.LD
 
-In each folder, you will find the scripts sorted in number. <br>
-If you you need any help or observe a problem, do not hesitate to report us the potential issue:<a href="mailto:thibault.leroy@inrae.fr;shanghuiying@outlook.com?subject=[SpeciationPopulus-Github]"> here </a>. Before reporting us a potential error, please test the program alone in order to exclude a problem during the compiling/installation of the software.
+In each folder, you will find the scripts, which are also sorted in ascending order of numbers. <br>
+Do not hesitate to report us the potential issue:<a href="mailto:thibault.leroy@inrae.fr;shanghuiying@outlook.com?subject=[SpeciationPopulus-Github]"> here </a>. Before reporting us a potential error, please test the program alone in order to exclude a problem during the compiling/installation of the software.
